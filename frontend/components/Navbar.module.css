@@ -1,0 +1,131 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 2px 16px rgba(32, 98, 173, 0.06);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 72px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logoName {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  letter-spacing: 0.08em;
+}
+
+.logoTagline {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+}
+
+.links {
+  display: flex;
+  list-style: none;
+  gap: 32px;
+  flex: 1;
+  justify-content: center;
+}
+
+.links a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.2s;
+}
+
+.links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-orange);
+  border-radius: 2px;
+  transition: width 0.25s ease;
+}
+
+.links a:hover::after { width: 100%; }
+.links a:hover { color: var(--color-primary-dark); }
+
+.ctas {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: auto;
+}
+
+.bar {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background: var(--color-primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.barActive {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+.barMid { opacity: 0; }
+
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 24px;
+  background: #fff;
+  border-top: 1px solid var(--color-border);
+}
+
+.mobileMenu a {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .links { display: none; }
+  .ctas { display: none; }
+  .hamburger { display: flex; }
+}

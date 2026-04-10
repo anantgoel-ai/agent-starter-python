@@ -1,0 +1,92 @@
+.footer {
+  background: var(--color-primary);
+  color: rgba(255,255,255,0.85);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 60px;
+  padding-top: 64px;
+  padding-bottom: 48px;
+}
+
+.brand { display: flex; flex-direction: column; gap: 20px; }
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+}
+
+.logoName {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fff;
+  letter-spacing: 0.08em;
+}
+
+.logoTagline {
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.1em;
+}
+
+.desc {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  max-width: 320px;
+}
+
+.links {
+  display: flex;
+  gap: 40px;
+}
+
+.linksCol {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.linksCol h4 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-teal);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.linksCol a {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.7);
+  transition: color 0.2s;
+}
+
+.linksCol a:hover { color: #fff; }
+
+.bottom {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding: 20px 0;
+}
+
+.bottom .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.powered {
+  font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .inner { grid-template-columns: 1fr; gap: 40px; }
+  .links { flex-wrap: wrap; gap: 24px; }
+  .bottom .container { flex-direction: column; gap: 8px; text-align: center; }
+}

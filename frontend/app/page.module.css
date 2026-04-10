@@ -1,0 +1,44 @@
+.ctaBanner {
+  padding: 80px 0;
+  background: var(--gradient-hero);
+}
+
+.ctaInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 24px;
+  padding: 48px 56px;
+}
+
+.ctaText h2 {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.ctaText p {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+.ctaText code {
+  background: rgba(0,0,0,0.25);
+  color: var(--color-yellow);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-left: 4px;
+}
+
+@media (max-width: 768px) {
+  .ctaInner { flex-direction: column; text-align: center; padding: 36px 24px; }
+  .ctaText p { max-width: 100%; }
+}
