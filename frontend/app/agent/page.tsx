@@ -64,11 +64,20 @@ export default function AgentPage() {
     return `${m}:${sec}`;
   };
 
-  const addTranscript = useCallback((speaker: "user" | "agent", text: string) => {
-    setTranscript((prev) => [
-      ...prev,
-      { id: `${Date.now()}-${Math.random()}`, speaker, text, timestamp: new Date() },
-    ]);
+  const addTranscript = useCallback((speaker: "user" | "agent", text: string, id?: string) => {
+    setTranscript((prev) => {
+      const entryId = id || `${Date.now()}-${Math.random()}`;
+      const existingIdx = prev.findIndex((t) => t.id === entryId);
+      if (existingIdx >= 0) {
+        const copy = [...prev];
+        copy[existingIdx] = { ...copy[existingIdx], text };
+        return copy;
+      }
+      return [
+        ...prev,
+        { id: entryId, speaker, text, timestamp: new Date() },
+      ];
+    });
   }, []);
 
   const startSession = useCallback(async () => {
@@ -122,9 +131,9 @@ export default function AgentPage() {
         RoomEvent.TranscriptionReceived,
         (segments, participant) => {
           for (const segment of segments) {
-            if (!segment.final) continue;
+            // Passing segment.id ensures the same bubble is updated for interim results live!
             const speaker = participant?.isAgent ? "agent" : "user";
-            addTranscript(speaker, segment.text);
+            addTranscript(speaker, segment.text, segment.id);
           }
         }
       );
