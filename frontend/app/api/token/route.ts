@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
   const apiKey = process.env.LIVEKIT_API_KEY?.trim();
   const apiSecret = process.env.LIVEKIT_API_SECRET?.trim();
   const wsUrl = process.env.LIVEKIT_URL?.trim();
-  const httpUrl = process.env.LIVEKIT_HTTP_URL?.trim() || wsUrl?.replace(/^wss?:\/\//, "https://");
+  const httpUrl = (process.env.LIVEKIT_HTTP_URL?.trim() ?? wsUrl?.replace(/^wss?:\/\//, "https://"))!;
 
   console.log(
     "[token] env status:",
@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
   // 2. Dispatch "my-agent" to the room so the Python backend joins.
   //    agent_name must match @server.rtc_session(agent_name=...) in agent.py
   try {
-    const agentClient = new AgentDispatchClient(httpUrl, apiKey, apiSecret);
+    const agentClient = new AgentDispatchClient(httpUrl, apiKey!, apiSecret!);
     await agentClient.createDispatch(room, "my-agent");
     console.log(`[token] Dispatched my-agent to room: ${room}`);
   } catch (err) {
