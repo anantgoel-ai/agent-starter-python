@@ -13,6 +13,7 @@ dependencies = [
     "livekit-plugins-google>=1.5.2",
     "livekit-plugins-noise-cancellation~=0.2",
     "livekit-plugins-openai>=1.5.1",
+    "livekit-plugins-ai-coustics~=0.2",
     "python-dotenv",
 ]
 
